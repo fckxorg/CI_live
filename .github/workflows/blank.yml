@@ -31,20 +31,16 @@ jobs:
         
       - name: Configure cmake files
         working-directory: ${{github.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -DTEST=ON
+        run: cmake $GITHUB_WORKSPACE -DTESTS=ON
       
       - name: Build and test
         working-directory: ${{github.workspace}}/build
         run: make -j 2
       
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: odd_checker
+          path: bin/odd_checker
       
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      
