@@ -34,6 +34,7 @@ jobs:
         run: cmake $GITHUB_WORKSPACE -DTEST=ON
       
       - name: Build and test
+        working-directory: ${{github.workspace}}/build
         run: make -j 2
       
       
